@@ -1,25 +1,12 @@
-# ==========================================================================
-#  Hub configuration - Erase Network
-#  Color codes use the "&" prefix (e.g. &a = green, &l = bold).
-# ==========================================================================
+title: "&l&aErase"
+prefix: "&l&aErase &r&7| &r"
 
-# Scoreboard sidebar title (objective title).
-title: "&l&cERASE"
-
-# Generic chat prefix.
-prefix: "&l&cErase &r&7| &r"
-
-# Network domain shown on the scoreboard / welcome message.
 domain: "erasemc.com"
 website: "erasemc.com"
 
-# Inventory slot (0-8 hotbar) where the server-selector compass is placed.
 hub-item-slot: 4
-
-# How often (in seconds) the real online count of each server is refreshed.
 query-interval: 5
 
-# Hub spawn location. Players are teleported here on join.
 spawn:
   world: "world"
   x: 0.5
@@ -28,12 +15,6 @@ spawn:
   yaw: 0.0
   pitch: 0.0
 
-# ==========================================================================
-#  Servers
-#  Each entry becomes a button in the selector form AND (if "npc" is set)
-#  an interactable NPC in the lobby. The online count is queried live from
-#  the server's address/port - make sure they are reachable from the hub.
-# ==========================================================================
 servers:
   practice_ru:
     display-name: "&aPractice &7(RU)"

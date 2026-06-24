@@ -14,6 +14,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\player\Player;
 use pocketmine\item\Item;
 use erase\hub\feature\item\HubItems;
 use erase\hub\feature\menu\ServerForms;
@@ -80,8 +81,6 @@ final class HubListener implements Listener
 			return;
 		}
 
-		// Right-clicking a block can fire both PlayerInteractEvent and
-		// PlayerItemUseEvent, so debounce to avoid opening the form twice.
 		$now = microtime(true);
 		$id = $player->getId();
 		if (isset($this->lastSelectorUse[$id]) && ($now - $this->lastSelectorUse[$id]) < 0.5) {
@@ -142,7 +141,7 @@ final class HubListener implements Listener
 		}
 	}
 
-	private function shouldProtect(\pocketmine\player\Player $player) : bool
+	private function shouldProtect(Player $player) : bool
 	{
 		return $player instanceof HubPlayer && !$player->hasPermission(self::BYPASS_PERMISSION);
 	}

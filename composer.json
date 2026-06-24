@@ -1,6 +1,6 @@
 {
     "name": "erasemc/hub",
-    "description": "Hub system for the Erase Network (PocketMine-MP / Dummy).",
+    "description": "Hub system for the Erase Network (Dummy).",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",

@@ -15,9 +15,6 @@ use function array_values;
 
 final class ServerForms
 {
-	/**
-	 * Opens the full server selector listing every configured server with its live online count.
-	 */
 	public static function sendSelector(HubPlayer $player) : void
 	{
 		$serverManager = Hub::getInstance()->getServerManager();
@@ -45,9 +42,6 @@ final class ServerForms
 		$player->sendForm($form);
 	}
 
-	/**
-	 * Opens the form for a single server (used by NPC interaction).
-	 */
 	public static function sendServer(HubPlayer $player, ServerConfig $server) : void
 	{
 		$form = new SimpleForm(static function (HubPlayer $player, ?int $data) use ($server) : void {

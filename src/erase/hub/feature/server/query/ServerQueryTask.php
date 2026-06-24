@@ -27,10 +27,6 @@ use function unpack;
 use const PHP_INT_MAX;
 use const STREAM_CLIENT_CONNECT;
 
-/**
- * Queries the real online player count of each configured server by sending a
- * RakNet "unconnected ping" and parsing the server info string from the pong.
- */
 final class ServerQueryTask extends AsyncTask
 {
 	private const string MAGIC = "\x00\xff\xff\x00\xfe\xfe\xfe\xfe\xfd\xfd\xfd\xfd\x12\x34\x56\x78";
@@ -94,7 +90,6 @@ final class ServerQueryTask extends AsyncTask
 			return null;
 		}
 
-		// 1 (id) + 8 (ping time) + 8 (server guid) + 16 (magic) = 33
 		$offset = 33;
 		$length = unpack("n", substr($response, $offset, 2))[1] ?? 0;
 		if ($length <= 0) {
@@ -104,7 +99,6 @@ final class ServerQueryTask extends AsyncTask
 		$info = substr($response, $offset + 2, $length);
 		$parts = explode(";", $info);
 
-		// MCPE;motd;protocol;version;onlinePlayers;maxPlayers;serverId;...
 		if (!isset($parts[4]) || $parts[4] === "") {
 			return null;
 		}

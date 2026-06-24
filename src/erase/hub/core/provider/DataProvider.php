@@ -9,10 +9,6 @@ use erase\hub\feature\player\HubPlayer;
 use erase\hub\Hub;
 use function time;
 
-/**
- * Lightweight SQLite3 storage. The hub barely needs persistence, so this only
- * keeps a small record of every player (name, last join time and join count).
- */
 final class DataProvider
 {
 	private SQLite3 $db;

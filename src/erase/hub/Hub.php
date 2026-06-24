@@ -30,11 +30,11 @@ final class Hub extends PluginBase
 
 	/** @var array<int, array{0: int, 1: int, 2: int}> */
 	private const array NPC_COLORS = [
-		[85, 255, 85],   // green  - Practice (RU)
-		[85, 255, 255],  // aqua   - Practice (EU)
-		[85, 85, 255],   // blue   - BedWars (RU)
-		[255, 170, 0],   // gold
-		[255, 85, 255],  // magenta
+		[85, 255, 85],
+		[85, 255, 255],
+		[85, 85, 255],
+		[255, 170, 0],
+		[255, 85, 255],
 	];
 
 	private Configuration $configuration;
@@ -46,8 +46,6 @@ final class Hub extends PluginBase
 
 	protected function onLoad() : void
 	{
-		// Register the Composer autoloader so bundled dependencies
-		// (jojoe77777/form-api) can be used like any other library.
 		$autoload = Path::join($this->getFile(), 'vendor', 'autoload.php');
 		if (is_file($autoload)) {
 			require_once $autoload;

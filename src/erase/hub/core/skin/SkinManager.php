@@ -20,11 +20,6 @@ use function is_file;
 use function round;
 use const IMAGETYPE_PNG;
 
-/**
- * Loads NPC skins from PNG files. Default skins ship in resources/skins and are
- * copied into the data folder on first run, so server owners can replace them
- * with their own textures.
- */
 final class SkinManager
 {
 	private const array VALID_SIZES = [
