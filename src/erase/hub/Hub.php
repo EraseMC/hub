@@ -11,6 +11,7 @@ use erase\hub\core\config\Configuration;
 use erase\hub\core\l10n\Translator;
 use erase\hub\core\provider\DataProvider;
 use erase\hub\core\scoreboard\ScoreboardUpdateTask;
+use erase\hub\core\skin\SkinManager;
 use erase\hub\core\utils\SkinFactory;
 use erase\hub\feature\command\HubCommand;
 use erase\hub\feature\command\SetSpawnCommand;
@@ -39,6 +40,17 @@ final class Hub extends PluginBase
 	private ServerManager $serverManager;
 	private LobbyManager $lobbyManager;
 	private NPCManager $npcManager;
+	private SkinManager $skinManager;
+
+	protected function onLoad() : void
+	{
+		// Register the bundled vendor libraries (jojoe77777/FormAPI) with the
+		// server class loader so they can be used like any other dependency.
+		$this->getServer()->getLoader()->addPath(
+			'',
+			$this->getFile() . 'vendor/jojoe77777/FormAPI/src'
+		);
+	}
 
 	protected function onEnable() : void
 	{
@@ -50,6 +62,7 @@ final class Hub extends PluginBase
 		Translator::init($this);
 
 		$this->provider = new DataProvider($this);
+		$this->skinManager = new SkinManager($this);
 		$this->serverManager = new ServerManager($this);
 		$this->lobbyManager = new LobbyManager($this);
 		$this->npcManager = new NPCManager($this);
@@ -98,7 +111,6 @@ final class Hub extends PluginBase
 				continue;
 			}
 
-			$color = self::NPC_COLORS[$index % count(self::NPC_COLORS)];
 			$location = new Location(
 				$server->npc->x,
 				$server->npc->y,
@@ -108,7 +120,13 @@ final class Hub extends PluginBase
 				$server->npc->pitch
 			);
 
-			$npc = new ServerNPC($location, SkinFactory::solid($color[0], $color[1], $color[2]), $server);
+			$skin = $server->skin !== '' ? $this->skinManager->load($server->skin) : null;
+			if ($skin === null) {
+				$color = self::NPC_COLORS[$index % count(self::NPC_COLORS)];
+				$skin = SkinFactory::solid($color[0], $color[1], $color[2]);
+			}
+
+			$npc = new ServerNPC($location, $skin, $server);
 			$this->npcManager->register($npc);
 			$index++;
 		}

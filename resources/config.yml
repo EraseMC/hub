@@ -40,6 +40,8 @@ servers:
     short-name: "Practice (RU)"
     address: "127.0.0.1"
     port: 19133
+    # NPC skin PNG (placed in plugin_data/Hub/skins/). Defaults ship with the plugin.
+    skin: "practice_ru.png"
     npc:
       x: 2.5
       y: 100.0
@@ -52,6 +54,7 @@ servers:
     short-name: "Practice (EU)"
     address: "127.0.0.1"
     port: 19134
+    skin: "practice_eu.png"
     npc:
       x: 0.5
       y: 100.0
@@ -64,6 +67,7 @@ servers:
     short-name: "BedWars (RU)"
     address: "127.0.0.1"
     port: 19135
+    skin: "bedwars_ru.png"
     npc:
       x: -1.5
       y: 100.0

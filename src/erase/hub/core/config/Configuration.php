@@ -72,6 +72,7 @@ final class Configuration
 				(string) ($server['short-name'] ?? $id),
 				(string) ($server['address'] ?? '127.0.0.1'),
 				(int) ($server['port'] ?? 19132),
+				(string) ($server['skin'] ?? ''),
 				$npc,
 			);
 		}

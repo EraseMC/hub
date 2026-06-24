@@ -12,6 +12,7 @@ final readonly class ServerConfig
 		public string $shortName,
 		public string $address,
 		public int $port,
+		public string $skin = '',
 		public ?NpcSpawnConfig $npc = null,
 	) {
 	}
