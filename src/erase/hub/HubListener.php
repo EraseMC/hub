@@ -18,10 +18,14 @@ use pocketmine\item\Item;
 use erase\hub\feature\item\HubItems;
 use erase\hub\feature\menu\ServerForms;
 use erase\hub\feature\player\HubPlayer;
+use function microtime;
 
 final class HubListener implements Listener
 {
 	private const string BYPASS_PERMISSION = 'hub.bypass.protection';
+
+	/** @var array<int, float> player id => last selector-open timestamp */
+	private array $lastSelectorUse = [];
 
 	public function __construct(private readonly Hub $plugin)
 	{
@@ -50,6 +54,7 @@ final class HubListener implements Listener
 				$scoreboard->remove();
 				$player->setScoreboard(null);
 			}
+			unset($this->lastSelectorUse[$player->getId()]);
 		}
 	}
 
@@ -74,6 +79,15 @@ final class HubListener implements Listener
 		if (!$player instanceof HubPlayer || !HubItems::isSelector($item)) {
 			return;
 		}
+
+		// Right-clicking a block can fire both PlayerInteractEvent and
+		// PlayerItemUseEvent, so debounce to avoid opening the form twice.
+		$now = microtime(true);
+		$id = $player->getId();
+		if (isset($this->lastSelectorUse[$id]) && ($now - $this->lastSelectorUse[$id]) < 0.5) {
+			return;
+		}
+		$this->lastSelectorUse[$id] = $now;
 
 		ServerForms::sendSelector($player);
 	}
