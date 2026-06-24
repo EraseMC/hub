@@ -1,0 +1,14 @@
+name: Hub
+version: 1.0.0
+main: erase\hub\Hub
+api: 5.0.0
+author: EraseMC
+description: Hub system for the Erase Network (server selector, NPCs, scoreboard).
+
+permissions:
+  hub.command.setspawn:
+    default: op
+  hub.command.hub:
+    default: true
+  hub.bypass.protection:
+    default: op
