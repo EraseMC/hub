@@ -1,6 +1,0 @@
-name: FormAPI
-version: 1.0.0
-author: jojoe77777
-api: [3.0.0, 4.0.0, 5.0.0]
-antigen: jojoe77777\FormAPI
-description: A simple API for creating and managing forms (windows), bundled with the Hub plugin.

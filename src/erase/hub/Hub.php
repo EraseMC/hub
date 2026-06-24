@@ -20,7 +20,9 @@ use erase\hub\feature\npc\NPCManager;
 use erase\hub\feature\npc\ServerNPC;
 use erase\hub\feature\player\listener\HubPlayerListener;
 use erase\hub\feature\server\ServerManager;
+use Symfony\Component\Filesystem\Path;
 use function count;
+use function is_file;
 
 final class Hub extends PluginBase
 {
@@ -44,12 +46,12 @@ final class Hub extends PluginBase
 
 	protected function onLoad() : void
 	{
-		// Register the bundled vendor libraries (jojoe77777/FormAPI) with the
-		// server class loader so they can be used like any other dependency.
-		$this->getServer()->getLoader()->addPath(
-			'',
-			$this->getFile() . 'vendor/jojoe77777/FormAPI/src'
-		);
+		// Register the Composer autoloader so bundled dependencies
+		// (jojoe77777/form-api) can be used like any other library.
+		$autoload = Path::join($this->getFile(), 'vendor', 'autoload.php');
+		if (is_file($autoload)) {
+			require_once $autoload;
+		}
 	}
 
 	protected function onEnable() : void

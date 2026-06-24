@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "989706ab14826c288f1a182a0f79ea51",
+    "packages": [
+        {
+            "name": "jojoe77777/form-api",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "libs/FormAPI",
+                "reference": "cd911e9c562f2dc1ce0885de38502fde79c4ca5b"
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jojoe77777\\FormAPI\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jojoe77777"
+                }
+            ],
+            "description": "A simple API for creating and managing forms (windows) on PocketMine-MP.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=8.1"
+    },
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

@@ -1,0 +1,40 @@
+{
+    "packages": [
+        {
+            "name": "jojoe77777/form-api",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "libs/FormAPI",
+                "reference": "cd911e9c562f2dc1ce0885de38502fde79c4ca5b"
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "jojoe77777\\FormAPI\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jojoe77777"
+                }
+            ],
+            "description": "A simple API for creating and managing forms (windows) on PocketMine-MP.",
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            },
+            "install-path": "../jojoe77777/form-api"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
